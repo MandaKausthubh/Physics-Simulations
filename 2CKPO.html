@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.46">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4 Coupled KPOs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="2CKPO_files/libs/clipboard/clipboard.min.js"></script>
+<script src="2CKPO_files/libs/quarto-html/quarto.js"></script>
+<script src="2CKPO_files/libs/quarto-html/popper.min.js"></script>
+<script src="2CKPO_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="2CKPO_files/libs/quarto-html/anchor.min.js"></script>
+<link href="2CKPO_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="2CKPO_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="2CKPO_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="2CKPO_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="2CKPO_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">4 Coupled KPOs</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="4d778950-0321-4dc5-9304-c922a4f218c6" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> qutip <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># from tqdm import tqdm</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> qutip.ui.progressbar <span class="im">import</span> BaseProgressBar, TextProgressBar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="parameters" class="level2">
+<h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
+</section>
+<section id="hbar-1" class="level2">
+<h2 class="anchored" data-anchor-id="hbar-1"><span class="math inline">\(\hbar = 1\)</span></h2>
+<div id="12de975f-d549-4291-9ff2-fe65628ff5b1" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">2</span> <span class="co"># Number of KPOs</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n_levels <span class="op">=</span> <span class="dv">5</span> <span class="co"># Truncation level for Fock space</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> <span class="fl">1.0</span> <span class="co"># Kerr nonlinearity</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">7.0</span> <span class="op">*</span> K <span class="co"># Maximum pump strength</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>xi <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> K <span class="co"># Coupling constant</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">700</span> <span class="op">/</span> K <span class="co"># Total evolution time</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>num_steps <span class="op">=</span> <span class="dv">1000</span> <span class="co"># number of time steps</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="symmetric-coupling-matrix-j" class="level2">
+<h2 class="anchored" data-anchor-id="symmetric-coupling-matrix-j">Symmetric coupling matrix J</h2>
+<div id="969baf3c-9b2b-4ec6-b87c-a79808453870" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>J <span class="op">=</span> np.random.uniform(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, (N, N))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>J <span class="op">=</span> (J <span class="op">+</span> J.T) <span class="op">/</span> <span class="dv">2</span> <span class="co"># Make J symmetric</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>np.fill_diagonal(J, <span class="dv">0</span>) <span class="co"># Ensure no self coupling</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>J <span class="op">=</span> Qobj(J)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d894829e-f1b6-45be-8a51-93576308f423" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>J</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>Quantum object: dims=[[2], [2]], shape=(2, 2), type='oper', dtype=Dense, isherm=True
+Qobj data =
+[[0.         0.32539616]
+ [0.32539616 0.        ]]</code></pre>
+</div>
+</div>
+</section>
+<section id="annihilation-operator-hata_i" class="level2">
+<h2 class="anchored" data-anchor-id="annihilation-operator-hata_i">Annihilation operator <span class="math inline">\(\hat{a}_{i}\)</span></h2>
+<div id="532b7f56-f29a-4330-966d-e8ea11cde85e" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [destroy(n_levels) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(N)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="e8acdead-7eea-41b6-b7f3-2f10c14295db" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>Quantum object: dims=[[5], [5]], shape=(5, 5), type='oper', dtype=Dia, isherm=False
+Qobj data =
+[[0.         1.         0.         0.         0.        ]
+ [0.         0.         1.41421356 0.         0.        ]
+ [0.         0.         0.         1.73205081 0.        ]
+ [0.         0.         0.         0.         2.        ]
+ [0.         0.         0.         0.         0.        ]]</code></pre>
+</div>
+</div>
+</section>
+<section id="adiabatic-evolution-condition" class="level2">
+<h2 class="anchored" data-anchor-id="adiabatic-evolution-condition">Adiabatic evolution condition</h2>
+</section>
+<section id="delta_i-xi_0-sum_j1n-j_ij" class="level2">
+<h2 class="anchored" data-anchor-id="delta_i-xi_0-sum_j1n-j_ij"><span class="math inline">\(\Delta_{i} = \xi_{0} \sum_{j=1}^{N} |J_{i,j}|\)</span></h2>
+<div id="6341f4b7-91a2-4f5e-bb96-6e46081d3dab" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Delta <span class="op">=</span> [xi <span class="op">*</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(J[i])) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="705305dd-505c-4a3b-bca0-436f6800a558" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Delta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>[0.16269808040160777, 0.16269808040160777]</code></pre>
+</div>
+</div>
+</section>
+<section id="single-kpo-hamiltonian-terms" class="level2">
+<h2 class="anchored" data-anchor-id="single-kpo-hamiltonian-terms">Single KPO Hamiltonian terms</h2>
+<section id="h_deltai-delta_i-adagger_i-a_i" class="level3">
+<h3 class="anchored" data-anchor-id="h_deltai-delta_i-adagger_i-a_i"><span class="math inline">\(H_{\Delta}^{(i)} = \Delta_{i} a^\dagger_{i} a_{i}\)</span></h3>
+<div id="d664d4ef-a640-4e65-bd26-f4069ba2f16a" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>H_D <span class="op">=</span> [Delta[i] <span class="op">*</span> a[i].dag() <span class="op">*</span> a[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="h_ki-frack2-adagger_i2-a_i2" class="level3">
+<h3 class="anchored" data-anchor-id="h_ki-frack2-adagger_i2-a_i2"><span class="math inline">\(H_{K}^{(i)} = \frac{K}{2} {a^\dagger_{i}}^{2} {a_{i}}^{2}\)</span></h3>
+<div id="3de14f2c-7d57-448e-a987-e3a66e7645ec" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>H_K <span class="op">=</span> [(K <span class="op">/</span> <span class="dv">2</span>) <span class="op">*</span> a[i].dag() <span class="op">*</span> a[i].dag() <span class="op">*</span> a[i] <span class="op">*</span> a[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="611731ec-015e-4db6-b1c8-87e1537d7fbf" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>H_K[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>Quantum object: dims=[[5], [5]], shape=(5, 5), type='oper', dtype=Dia, isherm=True
+Qobj data =
+[[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0.]
+ [0. 0. 0. 3. 0.]
+ [0. 0. 0. 0. 6.]]</code></pre>
+</div>
+</div>
+</section>
+<section id="h_pi-adagger_i2-a_i2" class="level3">
+<h3 class="anchored" data-anchor-id="h_pi-adagger_i2-a_i2"><span class="math inline">\(H_{p}^{(i)} = {a^\dagger_{i}}^{2} + {a_{i}}^{2}\)</span></h3>
+</section>
+<section id="fracp2-will-be-multiplied-to-this-term-during-time-evolution" class="level3">
+<h3 class="anchored" data-anchor-id="fracp2-will-be-multiplied-to-this-term-during-time-evolution"><span class="math inline">\(\frac{p}{2}\)</span> will be multiplied to this term during time evolution</h3>
+<div id="c516672d-0655-4be0-a5bb-bc61b70efe8b" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>H_plist <span class="op">=</span> [a[i].dag() <span class="op">*</span> a[i].dag() <span class="op">+</span> a[i] <span class="op">*</span> a[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="f32cf261-03e1-42d3-8519-1622dd4a6dd5" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>H_plist[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>Quantum object: dims=[[5], [5]], shape=(5, 5), type='oper', dtype=Dia, isherm=True
+Qobj data =
+[[0.         0.         1.41421356 0.         0.        ]
+ [0.         0.         0.         2.44948974 0.        ]
+ [1.41421356 0.         0.         0.         3.46410162]
+ [0.         2.44948974 0.         0.         0.        ]
+ [0.         0.         3.46410162 0.         0.        ]]</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="coupling-term" class="level2">
+<h2 class="anchored" data-anchor-id="coupling-term">Coupling term</h2>
+</section>
+<section id="h_c-fracxi_02-sum_i1n-sum_j1n-j_ij-a_idagger-a_j-a_i-a_jdagger" class="level2">
+<h2 class="anchored" data-anchor-id="h_c-fracxi_02-sum_i1n-sum_j1n-j_ij-a_idagger-a_j-a_i-a_jdagger"><span class="math inline">\(H_{C} = \frac{\xi_{0}}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} J_{i,j} ( a_{i}^\dagger a_{j} + a_{i} a_{j}^\dagger)\)</span></h2>
+<div id="be263845-8d30-4a95-9ed7-53eb083ad31d" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>H_C <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> xi <span class="op">*</span> <span class="bu">sum</span>([J[i, j] <span class="op">*</span> (a[i].dag() <span class="op">*</span> a[j] <span class="op">+</span> a[i] <span class="op">*</span> a[j].dag()) </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                      <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N) <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(N)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="e22fc13c-c8bd-48b3-b04c-96736b17b6a8" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>H_C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>Quantum object: dims=[[5], [5]], shape=(5, 5), type='oper', dtype=Dia, isherm=True
+Qobj data =
+[[0.16269808 0.         0.         0.         0.        ]
+ [0.         0.48809424 0.         0.         0.        ]
+ [0.         0.         0.8134904  0.         0.        ]
+ [0.         0.         0.         1.13888656 0.        ]
+ [0.         0.         0.         0.         0.65079232]]</code></pre>
+</div>
+</div>
+</section>
+<section id="identity-operator" class="level2">
+<h2 class="anchored" data-anchor-id="identity-operator">Identity operator</h2>
+<div id="e815747f-5e66-4858-81d6-d35d8a660ce3" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> qeye(n_levels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="6ec45df4-32a3-4050-8060-8cb3668988fb" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>I</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>Quantum object: dims=[[5], [5]], shape=(5, 5), type='oper', dtype=Dia, isherm=True
+Qobj data =
+[[1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0.]
+ [0. 0. 1. 0. 0.]
+ [0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 1.]]</code></pre>
+</div>
+</div>
+</section>
+<section id="time-dependent-hamiltonian" class="level2">
+<h2 class="anchored" data-anchor-id="time-dependent-hamiltonian">Time-dependent Hamiltonian</h2>
+</section>
+<section id="hpt" class="level2">
+<h2 class="anchored" data-anchor-id="hpt"><span class="math inline">\(H(P(t))\)</span></h2>
+<div id="1b84b9f9-9e93-42e7-93c7-bf78edd353d4" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> H_t(t, args):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> args[<span class="st">'p_max'</span>] <span class="op">*</span> (t <span class="op">/</span> T)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    H_p <span class="op">=</span> (p <span class="op">/</span> <span class="dv">2</span>) <span class="op">*</span> <span class="bu">sum</span>([tensor([H_plist[i] <span class="cf">if</span> i <span class="op">==</span> k <span class="cf">else</span> I <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(N)]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N)])</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    H <span class="op">=</span> <span class="bu">sum</span>([tensor([H_K[i] <span class="cf">if</span> i <span class="op">==</span> k <span class="cf">else</span> I <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(N)]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N)]) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">sum</span>([tensor([H_D[i] <span class="cf">if</span> i <span class="op">==</span> k <span class="cf">else</span> I <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(N)]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N)]) <span class="op">-</span> <span class="op">\</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>        tensor([H_C <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> qeye(n_levels) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N)])</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> H <span class="op">-</span> H_p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="arguments-for-tdh" class="level2">
+<h2 class="anchored" data-anchor-id="arguments-for-tdh">Arguments for TDH</h2>
+<div id="bf70d094-16fb-4f13-b435-302a90791a35" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>H_args <span class="op">=</span> {<span class="st">'p_max'</span>: p}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="7b609a49-dce2-4466-ac99-27dd3f4637f9" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>H_args</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>{'p_max': 7.0}</code></pre>
+</div>
+</div>
+</section>
+<section id="initial-state-ket0-otimes-ket0-otimes-ket0-otimes-ket0" class="level2">
+<h2 class="anchored" data-anchor-id="initial-state-ket0-otimes-ket0-otimes-ket0-otimes-ket0">Initial state <span class="math inline">\(\ket{0} \otimes \ket{0} \otimes \ket{0} \otimes \ket{0}\)</span></h2>
+<div id="b95003e0-4c8e-4260-84f7-6012d12cfd8b" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>psi0 <span class="op">=</span> tensor([basis(n_levels, <span class="dv">0</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(N)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="3fe40fb7-ca09-411b-bd14-c9e2cc1abc16" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>psi0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>Quantum object: dims=[[5, 5], [1, 1]], shape=(25, 1), type='ket', dtype=Dense
+Qobj data =
+[[1.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]
+ [0.]]</code></pre>
+</div>
+</div>
+</section>
+<section id="time-evolution" class="level2">
+<h2 class="anchored" data-anchor-id="time-evolution">Time evolution</h2>
+<div id="82be8fc3-54ec-4c73-bc22-bed79ac52765" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> np.linspace(<span class="dv">0</span>, T, num_steps <span class="op">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="c6767489-6189-473a-a028-8e48f4a8c744" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> mesolve(H_t, psi0, times, [], [], args<span class="op">=</span>H_args, options<span class="op">=</span>{<span class="st">"progress_bar"</span>: <span class="st">"tqdm"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"9c129d0b8e804f10b1fcd1d76aa6413a","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<section id="extract-final-state" class="level3">
+<h3 class="anchored" data-anchor-id="extract-final-state">Extract final state</h3>
+<div id="b5f5f1a4-afd0-4e18-81be-06d74b596f28" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>final_state <span class="op">=</span> result.states[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>final_state</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>Quantum object: dims=[[5, 5], [1, 1]], shape=(25, 1), type='ket', dtype=Dense
+Qobj data =
+[[0.06033036-0.11155821j]
+ [0.        +0.j        ]
+ [0.12436617-0.22457515j]
+ [0.        +0.j        ]
+ [0.09109157-0.1637439j ]
+ [0.        +0.j        ]
+ [0.        +0.j        ]
+ [0.        +0.j        ]
+ [0.        +0.j        ]
+ [0.        +0.j        ]
+ [0.136019  -0.24569629j]
+ [0.        +0.j        ]
+ [0.28044677-0.49447726j]
+ [0.        +0.j        ]
+ [0.20518078-0.36060378j]
+ [0.        +0.j        ]
+ [0.        +0.j        ]
+ [0.        +0.j        ]
+ [0.        +0.j        ]
+ [0.        +0.j        ]
+ [0.10006538-0.17999859j]
+ [0.        +0.j        ]
+ [0.20609533-0.36232123j]
+ [0.        +0.j        ]
+ [0.15102825-0.2641402j ]]</code></pre>
+</div>
+</div>
+</section>
+<section id="the-complex-values-arise-because-the-system-accumulates-a-global-phase-factor-over-the-adiabatic-evolution-process" class="level3">
+<h3 class="anchored" data-anchor-id="the-complex-values-arise-because-the-system-accumulates-a-global-phase-factor-over-the-adiabatic-evolution-process">The complex values arise because the system accumulates a global phase factor over the adiabatic evolution process</h3>
+<div id="2c75cc86-0cbe-4200-af36-cc7425fb7f0e" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>fs <span class="op">=</span> Qobj(np.<span class="bu">abs</span>(final_state.full()))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>fs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>Quantum object: dims=[[25], [1]], shape=(25, 1), type='ket', dtype=Dense
+Qobj data =
+[[0.12682659]
+ [0.        ]
+ [0.25671178]
+ [0.        ]
+ [0.18737593]
+ [0.        ]
+ [0.        ]
+ [0.        ]
+ [0.        ]
+ [0.        ]
+ [0.28083418]
+ [0.        ]
+ [0.56847   ]
+ [0.        ]
+ [0.41489064]
+ [0.        ]
+ [0.        ]
+ [0.        ]
+ [0.        ]
+ [0.        ]
+ [0.20594313]
+ [0.        ]
+ [0.41683565]
+ [0.        ]
+ [0.30426893]]</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="ground-state-of-final-hamiltonian" class="level2">
+<h2 class="anchored" data-anchor-id="ground-state-of-final-hamiltonian">Ground state of final Hamiltonian</h2>
+<div id="a98d4b29-9972-4cf8-96ac-46466ec1d867" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>H_f <span class="op">=</span> H_t(T, args<span class="op">=</span>H_args)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="6081bd6e-a502-44f2-b2bd-16db5dc4c5a6" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>H_f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>Quantum object: dims=[[5, 5], [5, 5]], shape=(25, 25), type='oper', dtype=Dia, isherm=True
+Qobj data =
+[[ -0.16269808   0.          -4.94974747   0.           0.
+    0.           0.           0.           0.           0.
+   -4.94974747   0.           0.           0.           0.
+    0.           0.           0.           0.           0.
+    0.           0.           0.           0.           0.        ]
+ [  0.           0.           0.          -8.5732141    0.
+    0.           0.           0.           0.           0.
+    0.          -4.94974747   0.           0.           0.
+    0.           0.           0.           0.           0.
+    0.           0.           0.           0.           0.        ]
+ [ -4.94974747   0.           1.16269808   0.         -12.12435565
+    0.           0.           0.           0.           0.
+    0.           0.          -4.94974747   0.           0.
+    0.           0.           0.           0.           0.
+    0.           0.           0.           0.           0.        ]
+ [  0.          -8.5732141    0.           3.32539616   0.
+    0.           0.           0.           0.           0.
+    0.           0.           0.          -4.94974747   0.
+    0.           0.           0.           0.           0.
+    0.           0.           0.           0.           0.        ]
+ [  0.           0.         -12.12435565   0.           6.48809424
+    0.           0.           0.           0.           0.
+    0.           0.           0.           0.          -4.94974747
+    0.           0.           0.           0.           0.
+    0.           0.           0.           0.           0.        ]
+ [  0.           0.           0.           0.           0.
+   -0.32539616   0.          -4.94974747   0.           0.
+    0.           0.           0.           0.           0.
+   -8.5732141    0.           0.           0.           0.
+    0.           0.           0.           0.           0.        ]
+ [  0.           0.           0.           0.           0.
+    0.          -0.16269808   0.          -8.5732141    0.
+    0.           0.           0.           0.           0.
+    0.          -8.5732141    0.           0.           0.
+    0.           0.           0.           0.           0.        ]
+ [  0.           0.           0.           0.           0.
+   -4.94974747   0.           1.           0.         -12.12435565
+    0.           0.           0.           0.           0.
+    0.           0.          -8.5732141    0.           0.
+    0.           0.           0.           0.           0.        ]
+ [  0.           0.           0.           0.           0.
+    0.          -8.5732141    0.           3.16269808   0.
+    0.           0.           0.           0.           0.
+    0.           0.           0.          -8.5732141    0.
+    0.           0.           0.           0.           0.        ]
+ [  0.           0.           0.           0.           0.
+    0.           0.         -12.12435565   0.           6.32539616
+    0.           0.           0.           0.           0.
+    0.           0.           0.           0.          -8.5732141
+    0.           0.           0.           0.           0.        ]
+ [ -4.94974747   0.           0.           0.           0.
+    0.           0.           0.           0.           0.
+    0.51190576   0.          -4.94974747   0.           0.
+    0.           0.           0.           0.           0.
+  -12.12435565   0.           0.           0.           0.        ]
+ [  0.          -4.94974747   0.           0.           0.
+    0.           0.           0.           0.           0.
+    0.           0.67460384   0.          -8.5732141    0.
+    0.           0.           0.           0.           0.
+    0.         -12.12435565   0.           0.           0.        ]
+ [  0.           0.          -4.94974747   0.           0.
+    0.           0.           0.           0.           0.
+   -4.94974747   0.           1.83730192   0.         -12.12435565
+    0.           0.           0.           0.           0.
+    0.           0.         -12.12435565   0.           0.        ]
+ [  0.           0.           0.          -4.94974747   0.
+    0.           0.           0.           0.           0.
+    0.          -8.5732141    0.           4.           0.
+    0.           0.           0.           0.           0.
+    0.           0.           0.         -12.12435565   0.        ]
+ [  0.           0.           0.           0.          -4.94974747
+    0.           0.           0.           0.           0.
+    0.           0.         -12.12435565   0.           7.16269808
+    0.           0.           0.           0.           0.
+    0.           0.           0.           0.         -12.12435565]
+ [  0.           0.           0.           0.           0.
+   -8.5732141    0.           0.           0.           0.
+    0.           0.           0.           0.           0.
+    2.34920768   0.          -4.94974747   0.           0.
+    0.           0.           0.           0.           0.        ]
+ [  0.           0.           0.           0.           0.
+    0.          -8.5732141    0.           0.           0.
+    0.           0.           0.           0.           0.
+    0.           2.51190576   0.          -8.5732141    0.
+    0.           0.           0.           0.           0.        ]
+ [  0.           0.           0.           0.           0.
+    0.           0.          -8.5732141    0.           0.
+    0.           0.           0.           0.           0.
+   -4.94974747   0.           3.67460384   0.         -12.12435565
+    0.           0.           0.           0.           0.        ]
+ [  0.           0.           0.           0.           0.
+    0.           0.           0.          -8.5732141    0.
+    0.           0.           0.           0.           0.
+    0.          -8.5732141    0.           5.83730192   0.
+    0.           0.           0.           0.           0.        ]
+ [  0.           0.           0.           0.           0.
+    0.           0.           0.           0.          -8.5732141
+    0.           0.           0.           0.           0.
+    0.           0.         -12.12435565   0.           9.
+    0.           0.           0.           0.           0.        ]
+ [  0.           0.           0.           0.           0.
+    0.           0.           0.           0.           0.
+  -12.12435565   0.           0.           0.           0.
+    0.           0.           0.           0.           0.
+    6.           0.          -4.94974747   0.           0.        ]
+ [  0.           0.           0.           0.           0.
+    0.           0.           0.           0.           0.
+    0.         -12.12435565   0.           0.           0.
+    0.           0.           0.           0.           0.
+    0.           6.16269808   0.          -8.5732141    0.        ]
+ [  0.           0.           0.           0.           0.
+    0.           0.           0.           0.           0.
+    0.           0.         -12.12435565   0.           0.
+    0.           0.           0.           0.           0.
+   -4.94974747   0.           7.32539616   0.         -12.12435565]
+ [  0.           0.           0.           0.           0.
+    0.           0.           0.           0.           0.
+    0.           0.           0.         -12.12435565   0.
+    0.           0.           0.           0.           0.
+    0.          -8.5732141    0.           9.48809424   0.        ]
+ [  0.           0.           0.           0.           0.
+    0.           0.           0.           0.           0.
+    0.           0.           0.           0.         -12.12435565
+    0.           0.           0.           0.           0.
+    0.           0.         -12.12435565   0.          12.65079232]]</code></pre>
+</div>
+</div>
+<div id="c82dabc7-a103-421d-816f-d5874a3a56ef" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>ground_state <span class="op">=</span> H_f.groundstate()[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="75e71d22-5fe8-48f5-ade4-1720583951e1" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> Qobj(np.<span class="bu">abs</span>(ground_state.full()))</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>gs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>Quantum object: dims=[[25], [1]], shape=(25, 1), type='ket', dtype=Dense
+Qobj data =
+[[1.32653597e-01]
+ [3.33066907e-16]
+ [2.67291971e-01]
+ [3.33066907e-16]
+ [1.94939575e-01]
+ [0.00000000e+00]
+ [0.00000000e+00]
+ [8.67361738e-19]
+ [9.23265913e-20]
+ [2.84492802e-19]
+ [2.81107579e-01]
+ [2.84528250e-16]
+ [5.66421119e-01]
+ [2.13517961e-16]
+ [4.13098424e-01]
+ [8.21996092e-20]
+ [8.43077334e-20]
+ [3.24271556e-19]
+ [5.71961578e-20]
+ [2.15039135e-19]
+ [2.04677985e-01]
+ [1.71959461e-16]
+ [4.12418382e-01]
+ [1.34923728e-16]
+ [3.00782189e-01]]</code></pre>
+</div>
+</div>
+<section id="check-if-the-final-state-after-adiabatic-evolution-is-equal-to-the-instantaneous-ground-state-of-the-final-hamiltonian" class="level3">
+<h3 class="anchored" data-anchor-id="check-if-the-final-state-after-adiabatic-evolution-is-equal-to-the-instantaneous-ground-state-of-the-final-hamiltonian">Check if the final state after adiabatic evolution is equal to the instantaneous ground state of the final hamiltonian</h3>
+<div id="086cd469-3c9d-43f8-9624-a6edf39823fd" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cossim(fs, gs):</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.linalg.norm(fs) <span class="op">*</span> np.linalg.norm(gs) <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>        cossim <span class="op">=</span> np.dot(fs.T, gs) <span class="op">/</span> (np.linalg.norm(fs) <span class="op">*</span> np.linalg.norm(gs))</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> cossim.item()  <span class="co"># Convert the 2D array to a scalar</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span>  <span class="co"># Return 0 as a scalar</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>sim <span class="op">=</span> np.real(cossim(fs.full(), gs.full()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>0.9998780710307189</code></pre>
+</div>
+</div>
+<div id="acef3229" class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>H_i_eigen_val, H_i_Eigenvecs <span class="op">=</span> H_t(<span class="dv">0</span>, args<span class="op">=</span>H_args).eigenstates()</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(H_i_eigen_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

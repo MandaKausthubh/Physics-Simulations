@@ -1,0 +1,123 @@
+---
+title: "Bifurcation of Non-linear Oscillators for Q.C"
+format:
+  html:
+    code-fold: false 
+jupyter: python3
+---
+
+# Creating the Bifurcation Diagram.
+
+The differential equation followed by the KPO(Kerr Parametric Oscillators)
+$$
+\displaylines{
+x ̇= y[∆ + p + K(x^2 + y^2)]\\
+y ̇= x[- ∆ + p - K(x^2 + y^2)]
+}
+$$
+
+## Importing list of Libraries in Python
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+
+## Defining the start point
+```{python}
+d = 0.1
+k = d
+p = 1.1*d
+h = 0.01
+
+def Differential(x, y):
+  x_dot = y*(d + p + k*(x**2 + y**2))
+  y_dot = x*(-d + p - k*(x**2 + y**2))
+  return {"x":x_dot, "y":y_dot}
+
+time = np.arange(start=0, stop=1000, step=h)
+x_val = np.zeros_like(time)
+y_val = np.zeros_like(time)
+
+x_val[0] = 0.001
+y_val[0] = 0.001
+```
+
+
+## Evolution of the system
+
+```{python}
+for i in range(1,len(time)):
+  k1 = Differential(x_val[i-1], y_val[i-1])
+  x_val[i] = x_val[i-1] + (k1)["x"]*h
+  y_val[i] = y_val[i-1] + (k1)["y"]*h
+
+# print(x_val)
+plt.plot(x_val,y_val)
+plt.show()
+```
+
+## Stability Analysis:
+```{python}
+import scipy as sc
+
+def DifferentialForm(z):
+  x,y = z
+  x_dot = y*(d + p + k*(x**2 + y**2))
+  y_dot = x*(-d + p - k*(x**2 + y**2))
+  return (x_dot, y_dot)
+
+p_vals = np.arange(0,5,0.001) * d
+x_val = np.zeros_like(p_vals)
+y_val = np.zeros_like(p_vals)
+
+for i, P in enumerate(p_vals):
+  p = P
+  equilibria = sc.optimize.fsolve(DifferentialForm, [1.1, 1.1])
+  x_val[i], y_val[i] = equilibria
+  
+fig, axs = plt.subplots(2)
+axs[1].scatter(p_vals, x_val)
+axs[0].scatter(p_vals, y_val)
+```
+
+```{python}
+d = 3
+
+def DifferentialFunc(x, y, p, t):
+  x_dot = y*(d + p*d + d*(x**2 + y**2))
+  y_dot = x*(-d + p*d - d*(x**2 + y**2))
+  p_dot = 0.1
+  return {"q1":x_dot, "q2":y_dot, "q3":p_dot}
+
+p_val = np.arange(0,5,0.01)
+h = 0.01
+t_val = np.arange(0,100,h)
+
+
+def SimulatedFuncValues(x_values, h, q1_0, q2_0, q3_0, differential):
+    q1_val = np.zeros_like(x_values)
+    q2_val = np.zeros_like(x_values)
+    q3_val = np.zeros_like(x_values)
+    
+    q1_val[0] = q1_0
+    q2_val[0] = q2_0
+    q3_val[0] = q3_0
+    for i in range(1, len(x_values)):
+        k1 = differential(q1_val[i-1], q2_val[i-1], q3_val[i-1], x_values[i-1])
+        k2 = differential(q1_val[i-1] + (h/2)*k1["q1"] , q2_val[i-1] + (h/2)*k1["q2"], q3_val[i-1] + (h/2)*k1["q3"], x_values[i-1]+(h/2))
+        k3 = differential(q1_val[i-1] + (h/2)*k2["q1"], q2_val[i-1] + (h/2)*k2["q2"], q3_val[i-1] + (h/2)*k2["q3"],x_values[i-1]+(h/2))
+        k4 = differential(q1_val[i-1] + h*k3["q1"] , q2_val[i-1] + (h)*k3["q2"], q3_val[i-1]+h*k3["q3"], x_values[i-1]+h)
+        q1_val[i] = q1_val[i-1] + ((k1["q1"] + 2*k2["q1"] + 2*k3["q1"] + k4["q1"])/6)*h
+        q2_val[i] = q2_val[i-1] + ((k1["q2"] + 2*k2["q2"] + 2*k3["q2"] + k4["q2"])/6)*h
+        q3_val[i] = q3_val[i-1] + ((k1["q3"] + 2*k2["q3"] + 2*k3["q3"] + k4["q3"])/6)*h
+    return (q1_val, q2_val, q3_val)
+
+x_val, y_val, p_val = SimulatedFuncValues(x_values=t_val, h=0.01, q1_0=0.01, q2_0=0.01, q3_0=0, differential=DifferentialFunc)
+
+plt.plot( p_val, x_val)
+plt.plot( p_val, y_val)
+```
+
+```{python}
+```
