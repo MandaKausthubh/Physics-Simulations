@@ -135,14 +135,14 @@ y&nbsp;̇= x[- ∆ + p - K(x^2 + y^2)]
 \]</span></p>
 <section id="importing-list-of-libraries-in-python" class="level2">
 <h2 class="anchored" data-anchor-id="importing-list-of-libraries-in-python">Importing list of Libraries in Python</h2>
-<div id="ca28dd96" class="cell" data-execution_count="1">
+<div id="628991cc" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="defining-the-start-point" class="level2">
 <h2 class="anchored" data-anchor-id="defining-the-start-point">Defining the start point</h2>
-<div id="f28871ee" class="cell" data-execution_count="2">
+<div id="2aaf8a43" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fl">0.1</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> d</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">1.1</span><span class="op">*</span>d</span>
@@ -163,7 +163,7 @@ y&nbsp;̇= x[- ∆ + p - K(x^2 + y^2)]
 </section>
 <section id="evolution-of-the-system" class="level2">
 <h2 class="anchored" data-anchor-id="evolution-of-the-system">Evolution of the system</h2>
-<div id="2a899710" class="cell" data-execution_count="3">
+<div id="9284a795" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="bu">len</span>(time)):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  k1 <span class="op">=</span> Differential(x_val[i<span class="op">-</span><span class="dv">1</span>], y_val[i<span class="op">-</span><span class="dv">1</span>])</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  x_val[i] <span class="op">=</span> x_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (k1)[<span class="st">"x"</span>]<span class="op">*</span>h</span>
@@ -183,7 +183,7 @@ y&nbsp;̇= x[- ∆ + p - K(x^2 + y^2)]
 </section>
 <section id="stability-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="stability-analysis">Stability Analysis:</h2>
-<div id="f27f4649" class="cell" data-execution_count="4">
+<div id="f020a5fe" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy <span class="im">as</span> sc</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> DifferentialForm(z):</span>
@@ -205,11 +205,11 @@ y&nbsp;̇= x[- ∆ + p - K(x^2 + y^2)]
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].scatter(p_vals, x_val)</span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].scatter(p_vals, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/88/wl5ftm6543l8qjh4j574vxv40000gn/T/ipykernel_25488/1441948047.py:15: RuntimeWarning:
+<pre><code>/var/folders/88/wl5ftm6543l8qjh4j574vxv40000gn/T/ipykernel_57773/1441948047.py:15: RuntimeWarning:
 
 The number of calls to function has reached maxfev = 600.
 
-/var/folders/88/wl5ftm6543l8qjh4j574vxv40000gn/T/ipykernel_25488/1441948047.py:15: RuntimeWarning:
+/var/folders/88/wl5ftm6543l8qjh4j574vxv40000gn/T/ipykernel_57773/1441948047.py:15: RuntimeWarning:
 
 xtol=0.000000 is too small, no further improvement in the approximate
   solution is possible.
@@ -223,46 +223,44 @@ xtol=0.000000 is too small, no further improvement in the approximate
 </div>
 </div>
 </div>
-<div id="8f0a3c41" class="cell" data-execution_count="5">
+<div id="37390dcb" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> DifferentialFunc(x, y, p, t):</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  x_dot <span class="op">=</span> y<span class="op">*</span>(d <span class="op">+</span> p<span class="op">*</span>d <span class="op">+</span> d<span class="op">*</span>(x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span>))</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  y_dot <span class="op">=</span> x<span class="op">*</span>(<span class="op">-</span>d <span class="op">+</span> p<span class="op">*</span>d <span class="op">-</span> d<span class="op">*</span>(x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  p_dot <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  p_dot <span class="op">=</span> <span class="fl">0.05</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {<span class="st">"q1"</span>:x_dot, <span class="st">"q2"</span>:y_dot, <span class="st">"q3"</span>:p_dot}</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>p_val <span class="op">=</span> np.arange(<span class="dv">0</span>,<span class="dv">5</span>,<span class="fl">0.01</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fl">0.01</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>t_val <span class="op">=</span> np.arange(<span class="dv">0</span>,<span class="dv">100</span>,h)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fl">0.01</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>t_val <span class="op">=</span> np.arange(<span class="dv">0</span>,<span class="dv">200</span>,h)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> SimulatedFuncValues(x_values, h, q1_0, q2_0, q3_0, differential):</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    q1_val <span class="op">=</span> np.zeros_like(x_values)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    q2_val <span class="op">=</span> np.zeros_like(x_values)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    q3_val <span class="op">=</span> np.zeros_like(x_values)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    q1_val[<span class="dv">0</span>] <span class="op">=</span> q1_0</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    q2_val[<span class="dv">0</span>] <span class="op">=</span> q2_0</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    q3_val[<span class="dv">0</span>] <span class="op">=</span> q3_0</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(x_values)):</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        k1 <span class="op">=</span> differential(q1_val[i<span class="op">-</span><span class="dv">1</span>], q2_val[i<span class="op">-</span><span class="dv">1</span>], q3_val[i<span class="op">-</span><span class="dv">1</span>], x_values[i<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        k2 <span class="op">=</span> differential(q1_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>k1[<span class="st">"q1"</span>] , q2_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>k1[<span class="st">"q2"</span>], q3_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>k1[<span class="st">"q3"</span>], x_values[i<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>(h<span class="op">/</span><span class="dv">2</span>))</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        k3 <span class="op">=</span> differential(q1_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>k2[<span class="st">"q1"</span>], q2_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>k2[<span class="st">"q2"</span>], q3_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>k2[<span class="st">"q3"</span>],x_values[i<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>(h<span class="op">/</span><span class="dv">2</span>))</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        k4 <span class="op">=</span> differential(q1_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> h<span class="op">*</span>k3[<span class="st">"q1"</span>] , q2_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h)<span class="op">*</span>k3[<span class="st">"q2"</span>], q3_val[i<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>h<span class="op">*</span>k3[<span class="st">"q3"</span>], x_values[i<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>h)</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        q1_val[i] <span class="op">=</span> q1_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> ((k1[<span class="st">"q1"</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k2[<span class="st">"q1"</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k3[<span class="st">"q1"</span>] <span class="op">+</span> k4[<span class="st">"q1"</span>])<span class="op">/</span><span class="dv">6</span>)<span class="op">*</span>h</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        q2_val[i] <span class="op">=</span> q2_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> ((k1[<span class="st">"q2"</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k2[<span class="st">"q2"</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k3[<span class="st">"q2"</span>] <span class="op">+</span> k4[<span class="st">"q2"</span>])<span class="op">/</span><span class="dv">6</span>)<span class="op">*</span>h</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>        q3_val[i] <span class="op">=</span> q3_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> ((k1[<span class="st">"q3"</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k2[<span class="st">"q3"</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k3[<span class="st">"q3"</span>] <span class="op">+</span> k4[<span class="st">"q3"</span>])<span class="op">/</span><span class="dv">6</span>)<span class="op">*</span>h</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (q1_val, q2_val, q3_val)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> SimulatedFuncValues(x_values, h, q1_0, q2_0, q3_0, differential):</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    q1_val <span class="op">=</span> np.zeros_like(x_values)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    q2_val <span class="op">=</span> np.zeros_like(x_values)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    q3_val <span class="op">=</span> np.zeros_like(x_values)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    q1_val[<span class="dv">0</span>] <span class="op">=</span> q1_0</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    q2_val[<span class="dv">0</span>] <span class="op">=</span> q2_0</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    q3_val[<span class="dv">0</span>] <span class="op">=</span> q3_0</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(x_values)):</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        k1 <span class="op">=</span> differential(q1_val[i<span class="op">-</span><span class="dv">1</span>], q2_val[i<span class="op">-</span><span class="dv">1</span>], q3_val[i<span class="op">-</span><span class="dv">1</span>], x_values[i<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        k2 <span class="op">=</span> differential(q1_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>k1[<span class="st">"q1"</span>] , q2_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>k1[<span class="st">"q2"</span>], q3_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>k1[<span class="st">"q3"</span>], x_values[i<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>(h<span class="op">/</span><span class="dv">2</span>))</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        k3 <span class="op">=</span> differential(q1_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>k2[<span class="st">"q1"</span>], q2_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>k2[<span class="st">"q2"</span>], q3_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>k2[<span class="st">"q3"</span>],x_values[i<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>(h<span class="op">/</span><span class="dv">2</span>))</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        k4 <span class="op">=</span> differential(q1_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> h<span class="op">*</span>k3[<span class="st">"q1"</span>] , q2_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (h)<span class="op">*</span>k3[<span class="st">"q2"</span>], q3_val[i<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>h<span class="op">*</span>k3[<span class="st">"q3"</span>], x_values[i<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>h)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        q1_val[i] <span class="op">=</span> q1_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> ((k1[<span class="st">"q1"</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k2[<span class="st">"q1"</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k3[<span class="st">"q1"</span>] <span class="op">+</span> k4[<span class="st">"q1"</span>])<span class="op">/</span><span class="dv">6</span>)<span class="op">*</span>h</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        q2_val[i] <span class="op">=</span> q2_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> ((k1[<span class="st">"q2"</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k2[<span class="st">"q2"</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k3[<span class="st">"q2"</span>] <span class="op">+</span> k4[<span class="st">"q2"</span>])<span class="op">/</span><span class="dv">6</span>)<span class="op">*</span>h</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        q3_val[i] <span class="op">=</span> q3_val[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> ((k1[<span class="st">"q3"</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k2[<span class="st">"q3"</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k3[<span class="st">"q3"</span>] <span class="op">+</span> k4[<span class="st">"q3"</span>])<span class="op">/</span><span class="dv">6</span>)<span class="op">*</span>h</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (q1_val, q2_val, q3_val)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>x_val, y_val, p_val <span class="op">=</span> SimulatedFuncValues(x_values<span class="op">=</span>t_val, h<span class="op">=</span><span class="fl">0.01</span>, q1_0<span class="op">=</span><span class="fl">0.0</span>, q2_0<span class="op">=</span><span class="fl">0.1</span>, q3_0<span class="op">=</span><span class="dv">0</span>, differential<span class="op">=</span>DifferentialFunc)</span>
 <span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>x_val, y_val, p_val <span class="op">=</span> SimulatedFuncValues(x_values<span class="op">=</span>t_val, h<span class="op">=</span><span class="fl">0.01</span>, q1_0<span class="op">=</span><span class="fl">0.01</span>, q2_0<span class="op">=</span><span class="fl">0.01</span>, q3_0<span class="op">=</span><span class="dv">0</span>, differential<span class="op">=</span>DifferentialFunc)</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>plt.plot( p_val, x_val)</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>plt.plot( p_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>plt.plot( p_val, x_val)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>plt.plot( p_val, y_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="bifurcation_files/figure-html/cell-6-output-1.png" width="571" height="411" class="figure-img"></p>
+<p><img src="bifurcation_files/figure-html/cell-6-output-1.png" width="582" height="411" class="figure-img"></p>
 </figure>
 </div>
 </div>

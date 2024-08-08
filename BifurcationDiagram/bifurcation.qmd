@@ -87,19 +87,17 @@ d = 3
 def DifferentialFunc(x, y, p, t):
   x_dot = y*(d + p*d + d*(x**2 + y**2))
   y_dot = x*(-d + p*d - d*(x**2 + y**2))
-  p_dot = 0.1
+  p_dot = 0.05
   return {"q1":x_dot, "q2":y_dot, "q3":p_dot}
 
-p_val = np.arange(0,5,0.01)
 h = 0.01
-t_val = np.arange(0,100,h)
+t_val = np.arange(0,200,h)
 
 
 def SimulatedFuncValues(x_values, h, q1_0, q2_0, q3_0, differential):
     q1_val = np.zeros_like(x_values)
     q2_val = np.zeros_like(x_values)
     q3_val = np.zeros_like(x_values)
-    
     q1_val[0] = q1_0
     q2_val[0] = q2_0
     q3_val[0] = q3_0
@@ -113,7 +111,7 @@ def SimulatedFuncValues(x_values, h, q1_0, q2_0, q3_0, differential):
         q3_val[i] = q3_val[i-1] + ((k1["q3"] + 2*k2["q3"] + 2*k3["q3"] + k4["q3"])/6)*h
     return (q1_val, q2_val, q3_val)
 
-x_val, y_val, p_val = SimulatedFuncValues(x_values=t_val, h=0.01, q1_0=0.01, q2_0=0.01, q3_0=0, differential=DifferentialFunc)
+x_val, y_val, p_val = SimulatedFuncValues(x_values=t_val, h=0.01, q1_0=0.0, q2_0=0.1, q3_0=0, differential=DifferentialFunc)
 
 plt.plot( p_val, x_val)
 plt.plot( p_val, y_val)
@@ -121,3 +119,4 @@ plt.plot( p_val, y_val)
 
 ```{python}
 ```
+
